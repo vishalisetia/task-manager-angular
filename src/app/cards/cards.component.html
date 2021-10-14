@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="container" style="width: 400px; color: rgb(0, 0, 0); background-color: rgb(230, 225, 233);">
+            <h3> Todo </h3>
+            <div 
+                class="list-group">
+                <app-card-item *ngFor="let card of todoCards; let i=index" [cardItem]="card" [index]="i" >  
+                </app-card-item>
+            </div>
+            <app-new-card></app-new-card>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="container" style="width: 400px; color: rgb(0, 0, 0); background-color: rgb(230, 225, 233);">
+            <h3> Doing </h3>
+            <div 
+                class="list-group">
+                <app-card-item *ngFor="let card of doingCards; let i=index" [cardItem]="card" [index]="i" >
+                </app-card-item>
+            </div>
+            <app-new-card></app-new-card>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="container" style="width: 400px; color: rgb(0, 0, 0); background-color: rgb(230, 225, 233);">
+            <h3> Done </h3>
+            <div 
+                class="list-group">
+                <app-card-item *ngFor="let card of doneCards; let i=index" [cardItem]="card" [index]="i" >
+                </app-card-item>
+            </div>
+            <app-new-card></app-new-card>
+        </div>
+    </div>
+</div>
