@@ -10,11 +10,11 @@ export class NotificationService {
 
   snackBarConfig: MatSnackBarConfig = {
     duration: 2000,
-    horizontalPosition: 'center',
+    horizontalPosition: 'right',
     verticalPosition: 'top'
-  }
+  };
 
-  success(msg: any) {
+  success(msg: any): void {
     this.snackBar.open(msg, '', this.snackBarConfig);
   }
 

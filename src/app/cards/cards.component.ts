@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Card } from './card.model';
-import { CardService } from '../shared/card.service';
+import { CardService } from './card.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from './modal/modal.component';
 import { Subscription } from 'rxjs';
-import { DataStorageService } from '../shared/data-storage.service';
 
 @Component({
   selector: 'app-cards',
@@ -11,26 +11,34 @@ import { DataStorageService } from '../shared/data-storage.service';
   providers: [CardService]
 })
 export class CardsComponent implements OnInit, OnDestroy {
-  cards: Card[];
-  todoCards: Card[];
-  doingCards: Card[];
-  doneCards: Card[];
-  subscription: Subscription;
 
-  constructor(private cardService: CardService, private dataStorageService: DataStorageService) { }
+  todoCards = [];
+  doingCards = [];
+  doneCards = [];
 
+  constructor(
+    public cardService: CardService,
+    private dialog: MatDialog) { }
+
+  dhuh(): void {
+    this.todoCards = this.cardService.getCards().filter(item => item.status === 'todo');
+    this.doingCards = this.cardService.getCards().filter(item => item.status === 'doing');
+    this.doneCards = this.cardService.getCards().filter(item => item.status === 'done');
+  }
   ngOnInit(): void {
-    this.subscription = this.cardService.cardsChanged
-      .subscribe((cards: Card[]) => {
-        this.cards = cards;
-      });
-    this.todoCards = this.cardService.getCardsByStatus('todo');
-    this.doingCards = this.cardService.getCardsByStatus('doing');
-    this.doneCards = this.cardService.getCardsByStatus('done');
+    this.dhuh();
+  }
+
+  onNewCard(status): void {
+    const dialog = this.dialog.open(ModalComponent, {
+      width: '700px',
+      data: {
+        status
+      }
+    });
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 
 }

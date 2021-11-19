@@ -9,10 +9,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { CardsComponent } from './cards/cards.component';
 import { CardItemComponent } from './cards/card-item/card-item.component';
-import { NewCardComponent } from './cards/new-card/new-card.component';
 import { ModalComponent } from './cards/modal/modal.component';
-import { MaterialModule } from './material/material.module';
-import { CardService } from './shared/card.service';
+import { MaterialModule } from './modules/material.module';
+import { CardService } from './cards/card.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,6 @@ import { CardService } from './shared/card.service';
     HeaderComponent,
     CardsComponent,
     CardItemComponent,
-    NewCardComponent,
     ModalComponent,
   ],
   imports: [

@@ -1,10 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { DataStorageService } from 'src/app/shared/data-storage.service';
-import { CardService } from '../../shared/card.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { CardService } from '../card.service';
 import { NotificationService } from '../../shared/notification.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Card } from '../card.model';
 
 @Component({
   selector: 'app-modal',
@@ -13,50 +11,35 @@ import { Card } from '../card.model';
 })
 export class ModalComponent implements OnInit {
 
-  id: number;
-  editMode = false;
   cardForm: FormGroup;
 
   constructor(
     private cardService: CardService,
-    private dataStorageService: DataStorageService,
     private notificationService: NotificationService,
-    private dialogRef: MatDialogRef<ModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public card: Card) { }
+    private formBuilder: FormBuilder,
+    public dialogRef: MatDialogRef<ModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data) {
+    }
 
   ngOnInit(): void {
     this.initForm();
   }
 
-  initForm() {
-    let cardTitle = '';
-    let cardDescription = '';
-    let cardStatus = '';
-    if (this.editMode) {
-      const card = this.cardService.getCard(this.id);
-      cardTitle = card.title;
-      cardDescription = card.description;
-      cardStatus = card.status;
-    }
-    this.cardForm = new FormGroup({
-      'title': new FormControl(cardTitle),
-      'description': new FormControl(cardDescription),
-      'status': new FormControl(cardStatus)
+  initForm(): void {
+    this.cardForm = this.formBuilder.group({
+      title: [this.data.title || ''],
+      description: [this.data.description || ''],
+      status: [this.data.status || '']
     });
   }
 
-  onSubmit() {
-    if (this.editMode) {
-      this.cardService.updateCard(this.id, this.cardForm.value);
+  onSubmit(): void {
+    if (this.data.id) {
+      this.cardService.updateCard({id: this.data.id, ...this.cardForm.value});
     } else {
       this.cardService.addCard(this.cardForm.value);
     }
-    this.dataStorageService.storeCards();
     this.notificationService.success('Added Successfully');
-    this.dialogRef.close();
-  }
-
-  onClose() {
     this.dialogRef.close();
   }
 

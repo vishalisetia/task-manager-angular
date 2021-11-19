@@ -6,7 +6,7 @@ import { MatSelectModule } from '@angular/material/select';
 
 const MaterialComponents = [
   MatButtonModule, MatDialogModule, MatSnackBarModule, MatSelectModule
-]
+];
 
 @NgModule({
   imports: [MaterialComponents],

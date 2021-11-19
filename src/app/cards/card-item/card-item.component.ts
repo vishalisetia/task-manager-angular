@@ -1,7 +1,7 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Card } from '../card.model';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 
 @Component({
@@ -11,22 +11,21 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class CardItemComponent implements OnInit {
   @Input() cardItem: Card;
-  @Input() index: number;
 
   constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
-  onEditCard() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%";
-    dialogConfig.data = {
-      title: this.cardItem.title,
-      description: this.cardItem.description,
-      status: this.cardItem.status
-    };
-    this.dialog.open(ModalComponent, dialogConfig);
+  onEditCard(): void {
+    const dialog = this.dialog.open(ModalComponent, {
+      width: '700px',
+      data: {
+        id: this.cardItem.id,
+        title: this.cardItem.title,
+        description: this.cardItem.description,
+        status: this.cardItem.status
+      }
+    });
   }
 }
