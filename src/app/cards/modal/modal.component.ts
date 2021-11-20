@@ -36,10 +36,10 @@ export class ModalComponent implements OnInit {
       this.notificationService.error('Please fill correct details');
       return;
     }
-    if (this.data.id) {
-      this.dialogRef.close({id: this.data.id, ...this.cardForm.value});
-    } else {
+    if (!this.data.id) {
       this.dialogRef.close(this.cardForm.value);
+    } else {
+      this.dialogRef.close({id: this.data.id, ...this.cardForm.value});
     }
   }
 

@@ -4,7 +4,7 @@
             <h3> Todo </h3>
             <div 
                 class="list-group">
-                <app-card-item *ngFor="let card of todoCards" [cardItem]="card">  
+                <app-card-item *ngFor="let card of cardsService.todoCards" [cardItem]="card">  
                 </app-card-item>
             </div>
             <button class="btn btn-primary" (click)="onNewCard('todo')">Add a card...</button>
@@ -15,7 +15,7 @@
             <h3> Doing </h3>
             <div 
                 class="list-group">
-                <app-card-item *ngFor="let card of doingCards" [cardItem]="card">
+                <app-card-item *ngFor="let card of cardsService.doingCards" [cardItem]="card">
                 </app-card-item>
             </div>
             <button class="btn btn-primary" (click)="onNewCard('doing')">Add a card...</button>
@@ -26,7 +26,7 @@
             <h3> Done </h3>
             <div 
                 class="list-group">
-                <app-card-item *ngFor="let card of doneCards" [cardItem]="card">
+                <app-card-item *ngFor="let card of cardsService.doneCards" [cardItem]="card">
                 </app-card-item>
             </div>
             <button class="btn btn-primary" (click)="onNewCard('done')">Add a card...</button>
