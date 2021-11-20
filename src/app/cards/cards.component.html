@@ -7,7 +7,7 @@
                 <app-card-item *ngFor="let card of todoCards" [cardItem]="card">  
                 </app-card-item>
             </div>
-            <button class="btn btn-lg btn-outline-primary" (click)="onNewCard('todo')">Add a card...</button>
+            <button class="btn btn-primary" (click)="onNewCard('todo')">Add a card...</button>
         </div>
     </div>
     <div class="col-md-4">
@@ -18,7 +18,7 @@
                 <app-card-item *ngFor="let card of doingCards" [cardItem]="card">
                 </app-card-item>
             </div>
-            <button class="btn btn-lg btn-outline-primary" (click)="onNewCard('doing')">Add a card...</button>
+            <button class="btn btn-primary" (click)="onNewCard('doing')">Add a card...</button>
         </div>
     </div>
     <div class="col-md-4">
@@ -29,7 +29,7 @@
                 <app-card-item *ngFor="let card of doneCards" [cardItem]="card">
                 </app-card-item>
             </div>
-            <button class="btn btn-lg btn-outline-primary" (click)="onNewCard('done')">Add a card...</button>
+            <button class="btn btn-primary" (click)="onNewCard('done')">Add a card...</button>
         </div>
     </div>
 </div>

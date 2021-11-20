@@ -11,7 +11,6 @@ import { CardsComponent } from './cards/cards.component';
 import { CardItemComponent } from './cards/card-item/card-item.component';
 import { ModalComponent } from './cards/modal/modal.component';
 import { MaterialModule } from './modules/material.module';
-import { CardService } from './cards/card.service';
 
 @NgModule({
   declarations: [
@@ -28,11 +27,8 @@ import { CardService } from './cards/card.service';
     HttpClientModule,
     NgbModule,
     BrowserAnimationsModule,
-
-    MaterialModule,
-    //AppRoutingModule
+    MaterialModule
   ],
-  providers: [CardService],
   bootstrap: [AppComponent],
   entryComponents: [ModalComponent]
 })

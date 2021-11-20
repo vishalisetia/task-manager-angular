@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { CardService } from '../card.service';
-import { NotificationService } from '../../shared/notification.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NotificationService } from '../../services/notification.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -14,7 +13,6 @@ export class ModalComponent implements OnInit {
   cardForm: FormGroup;
 
   constructor(
-    private cardService: CardService,
     private notificationService: NotificationService,
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<ModalComponent>,
@@ -27,20 +25,22 @@ export class ModalComponent implements OnInit {
 
   initForm(): void {
     this.cardForm = this.formBuilder.group({
-      title: [this.data.title || ''],
-      description: [this.data.description || ''],
-      status: [this.data.status || '']
+      title: [this.data.title || '', [Validators.required]],
+      description: [this.data.description || '', [Validators.required]],
+      status: [this.data.status || '', [Validators.required]]
     });
   }
 
   onSubmit(): void {
-    if (this.data.id) {
-      this.cardService.updateCard({id: this.data.id, ...this.cardForm.value});
-    } else {
-      this.cardService.addCard(this.cardForm.value);
+    if (this.cardForm.invalid) {
+      this.notificationService.success('Please fill correct details');
+      return;
     }
-    this.notificationService.success('Added Successfully');
-    this.dialogRef.close();
+    if (this.data.id) {
+      this.dialogRef.close({id: this.data.id, ...this.cardForm.value});
+    } else {
+      this.dialogRef.close(this.cardForm.value);
+    }
   }
 
 }
