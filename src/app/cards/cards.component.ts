@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from './modal/modal.component';
-import { Card } from './card.model';
+import { Card } from '../model/card.model';
 import { NotificationService } from '../services/notification.service';
 
 @Component({

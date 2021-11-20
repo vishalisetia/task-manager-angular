@@ -33,7 +33,7 @@ export class ModalComponent implements OnInit {
 
   onSubmit(): void {
     if (this.cardForm.invalid) {
-      this.notificationService.success('Please fill correct details');
+      this.notificationService.error('Please fill correct details');
       return;
     }
     if (this.data.id) {

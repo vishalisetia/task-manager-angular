@@ -18,4 +18,8 @@ export class NotificationService {
     this.snackBar.open(msg, '', this.snackBarConfig);
   }
 
+  error(msg: any): void {
+    this.snackBar.open(msg, '', this.snackBarConfig);
+  }
+
 }
