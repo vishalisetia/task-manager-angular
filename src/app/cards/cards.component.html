@@ -1,35 +1,41 @@
 <div class="row">
     <div class="col-md-4">
         <div class="container">
-            <h3> Todo </h3>
+            <div class="heading">
+                <h3> Todo </h3>
+                <mat-icon class="tap" (click)="onNewCard('todo')">add</mat-icon>
+            </div>
             <div 
                 class="list-group">
                 <app-card-item *ngFor="let card of cardsService.todoCards" [cardItem]="card">  
                 </app-card-item>
-            </div>
-            <button class="btn btn-primary" (click)="onNewCard('todo')">Add a card...</button>
+            </div> 
         </div>
     </div>
     <div class="col-md-4">
         <div class="container">
-            <h3> Doing </h3>
+            <div class="heading">
+                <h3> Doing </h3>
+                <mat-icon class="tap" (click)="onNewCard('doing')">add</mat-icon>
+            </div>
             <div 
                 class="list-group">
                 <app-card-item *ngFor="let card of cardsService.doingCards" [cardItem]="card">
                 </app-card-item>
             </div>
-            <button class="btn btn-primary" (click)="onNewCard('doing')">Add a card...</button>
         </div>
     </div>
     <div class="col-md-4">
         <div class="container">
-            <h3> Done </h3>
+            <div class="heading">
+                <h3> Done </h3>
+                <mat-icon class="tap" (click)="onNewCard('done')">add</mat-icon>
+            </div>
             <div 
                 class="list-group">
                 <app-card-item *ngFor="let card of cardsService.doneCards" [cardItem]="card">
                 </app-card-item>
             </div>
-            <button class="btn btn-primary" (click)="onNewCard('done')">Add a card...</button>
         </div>
     </div>
 </div>

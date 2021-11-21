@@ -4,9 +4,7 @@
         <p class="list-group-item-text">{{ cardItem.description }}</p>
     </div>
     <div class="pull-right">
-        <button class="btn btn-primary" (click)="onEditCard()">Edit</button>
-        <span class="tap" (click)="onDeleteCard()">
-            <mat-icon>delete</mat-icon>
-        </span>            
+        <mat-icon class="tap" (click)="onEditCard()">edit</mat-icon>
+        <mat-icon class="tap" (click)="onDeleteCard()">delete</mat-icon>      
     </div>
 </div>
