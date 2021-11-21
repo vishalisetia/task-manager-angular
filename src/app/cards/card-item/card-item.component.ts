@@ -47,4 +47,11 @@ export class CardItemComponent implements OnInit {
       }
     });
   }
+
+  onDeleteCard(): void {
+    const index = this.cardsService.cards.indexOf(this.cardItem);
+    this.cardsService.cards.splice(index, 1);
+    this.notificationService.success('Deleted Successfully');
+    this.cardsService.filterCards();
+  }
 }

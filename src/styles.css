@@ -6,3 +6,11 @@
 body {
     background-color: #0288D1;
 }
+
+.row {
+    padding: 0px 15px;
+}
+
+.tap {
+    cursor: pointer;
+}
