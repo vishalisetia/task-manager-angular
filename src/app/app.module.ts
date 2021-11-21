@@ -30,6 +30,6 @@ import { MaterialModule } from './modules/material.module';
     MaterialModule
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ModalComponent]
+  entryComponents: []
 })
 export class AppModule { }
