@@ -18,7 +18,7 @@ import { MaterialModule } from './modules/material.module';
     HeaderComponent,
     CardsComponent,
     CardItemComponent,
-    ModalComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
